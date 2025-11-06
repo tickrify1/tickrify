@@ -1,1 +1,58 @@
+# Dependencies
 node_modules/
+.pnp
+.pnp.js
+
+# Testing
+coverage/
+*.log
+
+# Production
+dist/
+build/
+.next/
+
+# Env files (IMPORTANTE - NUNCA FAZER COMMIT)
+.env
+.env.*
+.env.local
+.env.production
+.env.development
+apps/**/.env
+apps/**/.env.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Vercel
+.vercel
+
+# Railway
+.railway
+
+# Uploads
+uploads/
+*.upload
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Temporary
+tmp/
+temp/
+*.tmp
+
+# Database
+*.db
+*.sqlite
+dump.rdb
