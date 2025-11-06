@@ -1,0 +1,23 @@
+
+> ticrif-backend@1.0.0 dev
+> nest start --watch
+
+[2J[3J[H[[90m3:25:25 PM[0m] Starting compilation in watch mode...
+
+[[90m3:25:28 PM[0m] Found 0 errors. Watching for file changes.
+
+(node:88592) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Starting October 8, 2024, the Node SDK is entering a three-month notice period. We encourage everyone to migrate to @clerk/express. For full details, please see our changelog: https://clerk.com/changelog/2024-10-08-express-sdk
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [NestFactory] Starting Nest application...
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] AppModule dependencies initialized +12ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] MulterModule dependencies initialized +0ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] DatabaseModule dependencies initialized +22ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] StorageModule dependencies initialized +0ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] ConfigHostModule dependencies initialized +14ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] ConfigModule dependencies initialized +0ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] PaymentsModule dependencies initialized +0ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] PromptModule dependencies initialized +0ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] AiModule dependencies initialized +1ms
+[Nest] 88618  - 11/05/2025, 3:25:29 PM   ERROR [PackageLoader] The "class-validator" package is missing. Please, make sure to install it to take advantage of ValidationPipe.

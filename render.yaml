@@ -1,0 +1,64 @@
+# Configuração para deploy no Render.com
+# Coloque este arquivo na raiz do repositório
+
+services:
+  # Backend API
+  - type: web
+    name: tickrify-backend
+    env: node
+    region: oregon
+    plan: starter
+    buildCommand: cd apps/backend && npm install && npm run build && npx prisma generate && npx prisma migrate deploy
+    startCommand: cd apps/backend && npm run start:prod
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: CLERK_PUBLISHABLE_KEY
+        sync: false
+      - key: CLERK_SECRET_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          name: tickrify-redis
+          type: redis
+          property: connectionString
+      - key: FRONTEND_URL
+        sync: false
+
+  # Worker AI
+  - type: worker
+    name: tickrify-worker
+    env: node
+    region: oregon
+    plan: starter
+    buildCommand: cd apps/backend && npm install && npm run build && npx prisma generate
+    startCommand: cd apps/backend && npm run worker
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: DATABASE_URL
+        sync: false
+      - key: CLERK_PUBLISHABLE_KEY
+        sync: false
+      - key: CLERK_SECRET_KEY
+        sync: false
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          name: tickrify-redis
+          type: redis
+          property: connectionString
+      - key: FRONTEND_URL
+        sync: false
+
+databases:
+  # Redis for BullMQ
+  - name: tickrify-redis
+    plan: free
+    ipAllowList: []
+
