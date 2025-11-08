@@ -1,7 +1,7 @@
 // API Client for Tickrify Backend
 import { useAuth } from '@clerk/clerk-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3000';
 
 export interface AIAnalysisResponse {
   id: string;
@@ -45,8 +45,8 @@ export interface CreateAnalysisPayload {
 }
 
 class APIClient {
-  private getAuthHeader(token: string | null) {
-    return token ? { Authorization: `Bearer ${token}` } : {};
+  private getAuthHeader(token: string | null): HeadersInit {
+    return token ? { 'Authorization': `Bearer ${token}` } : {};
   }
 
   async createAnalysis(

@@ -7,8 +7,14 @@ export class AIAdapter {
   private openai: OpenAI;
 
   constructor() {
+    const apiKey = process.env.OPENAI_API_KEY || 'sk-dummy-key-for-development';
+    
+    if (!process.env.OPENAI_API_KEY) {
+      console.warn('⚠️  OPENAI_API_KEY não configurada. Usando chave dummy. A análise de IA não funcionará.');
+    }
+    
     this.openai = new OpenAI({
-      apiKey: process.env.OPENAI_API_KEY,
+      apiKey,
     });
   }
 

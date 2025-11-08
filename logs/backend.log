@@ -2,22 +2,142 @@
 > ticrif-backend@1.0.0 dev
 > nest start --watch
 
-[2J[3J[H[[90m3:25:25 PM[0m] Starting compilation in watch mode...
+[2J[3J[H[[90m2:05:11 PM[0m] Starting compilation in watch mode...
 
-[[90m3:25:28 PM[0m] Found 0 errors. Watching for file changes.
+[[90m2:05:13 PM[0m] Found 0 errors. Watching for file changes.
 
-(node:88592) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
+(node:68553) [DEP0190] DeprecationWarning: Passing args to a child process with shell option true can lead to security vulnerabilities, as the arguments are not escaped, only concatenated.
 (Use `node --trace-deprecation ...` to show where the warning was created)
 Starting October 8, 2024, the Node SDK is entering a three-month notice period. We encourage everyone to migrate to @clerk/express. For full details, please see our changelog: https://clerk.com/changelog/2024-10-08-express-sdk
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [NestFactory] Starting Nest application...
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] AppModule dependencies initialized +12ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] MulterModule dependencies initialized +0ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] DatabaseModule dependencies initialized +22ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] StorageModule dependencies initialized +0ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] ConfigHostModule dependencies initialized +14ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] ConfigModule dependencies initialized +0ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] PaymentsModule dependencies initialized +0ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] PromptModule dependencies initialized +0ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM     LOG [InstanceLoader] AiModule dependencies initialized +1ms
-[Nest] 88618  - 11/05/2025, 3:25:29 PM   ERROR [PackageLoader] The "class-validator" package is missing. Please, make sure to install it to take advantage of ValidationPipe.
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [NestFactory] Starting Nest application...
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] AppModule dependencies initialized +8ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] MulterModule dependencies initialized +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] DatabaseModule dependencies initialized +19ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] StorageModule dependencies initialized +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] ConfigHostModule dependencies initialized +23ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] ConfigModule dependencies initialized +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] PaymentsModule dependencies initialized +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] PromptModule dependencies initialized +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [InstanceLoader] AiModule dependencies initialized +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RoutesResolver] AuthController {/api/auth}: +210ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/auth/me, GET} route +2ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RoutesResolver] StripeController {/stripe}: +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/stripe/create-checkout-session, POST} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/stripe/create-customer-portal, POST} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/stripe/cancel-subscription, POST} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/stripe/reactivate-subscription, POST} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/stripe/subscription, GET} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/stripe/webhook, POST} route +1ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RoutesResolver] AiController {/api/ai}: +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/ai/analyze, POST} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/ai/analysis/:id, GET} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/ai/analyses, GET} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RoutesResolver] PromptController {/api/prompts}: +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/prompts/config, POST} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/prompts/latest, GET} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/prompts/list, GET} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/prompts/:version, GET} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:14 PM     LOG [RouterExplorer] Mapped {/api/prompts/:version/activate, POST} route +0ms
+[Nest] 68593  - 11/08/2025, 2:05:15 PM     LOG [NestApplication] Nest application successfully started +388ms
+🚀 Backend running on http://localhost:3001
+[Nest] 68593  - 11/08/2025, 2:41:55 PM   ERROR [ExceptionsHandler] 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+    at $n.handleRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:7315)
+    at $n.handleAndLogRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async AiController.listAnalyses (/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:20)
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 68593  - 11/08/2025, 2:41:55 PM   ERROR [ExceptionsHandler] 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+    at $n.handleRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:7315)
+    at $n.handleAndLogRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async AiController.listAnalyses (/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:20)
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 68593  - 11/08/2025, 2:43:01 PM   ERROR [ExceptionsHandler] 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+    at $n.handleRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:7315)
+    at $n.handleAndLogRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async AiController.listAnalyses (/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:20)
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 68593  - 11/08/2025, 2:43:01 PM   ERROR [ExceptionsHandler] 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+    at $n.handleRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:7315)
+    at $n.handleAndLogRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async AiController.listAnalyses (/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:20)
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-proxy.js:9:17

@@ -87,8 +87,8 @@ jobs:
       
       - name: Build Frontend
         env:
-          VITE_API_URL: ${{ secrets.VITE_API_URL }}
-          VITE_CLERK_PUBLISHABLE_KEY: ${{ secrets.VITE_CLERK_PUBLISHABLE_KEY }}
+          VITE_API_URL: ${{ vars.VITE_API_URL || secrets.VITE_API_URL }}
+          VITE_CLERK_PUBLISHABLE_KEY: ${{ vars.VITE_CLERK_PUBLISHABLE_KEY || secrets.VITE_CLERK_PUBLISHABLE_KEY }}
         run: |
           cd apps/frontend
           npm run build

@@ -1,0 +1,14 @@
+[build]
+builder = "nixpacks"
+buildCommand = "npm install && npm run build -w apps/backend"
+
+[deploy]
+startCommand = "npm run start:prod -w apps/backend"
+restartPolicyType = "on_failure"
+restartPolicyMaxRetries = 10
+
+[healthcheck]
+path = "/api/prompts/latest"
+timeout = 100
+interval = 60
+

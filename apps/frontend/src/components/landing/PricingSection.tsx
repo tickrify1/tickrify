@@ -1,45 +1,156 @@
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card";
 import { Check } from "lucide-react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import { SignInButton } from "@clerk/clerk-react";
+import { useAuth, SignInButton } from "@clerk/clerk-react";
+import { createCheckoutSession } from "../../lib/stripe";
+import { useToast } from "../../hooks/use-toast";
 
 const PricingSection = () => {
+  const { getToken, isSignedIn, isLoaded } = useAuth();
+  const { toast } = useToast();
+  const [loading, setLoading] = useState(false);
+  const [processingUpgrade, setProcessingUpgrade] = useState(false);
+
   const plans = [
     {
       title: "Free",
-      price: "$0",
+      price: "R$ 0",
       period: "/mês",
       description: "Para quem está começando a explorar.",
       features: [
-        "3 análises/mês",
-        "Timeframe 1H+",
-        "Alertas básicos de preço",
-        "Acesso à comunidade",
+        "3 análises por dia",
+        "Análise básica de IA",
+        "Histórico de 7 dias",
+        "Suporte por email",
       ],
       cta: "Começar Gratuitamente",
       isPopular: false,
-      isFree: true
+      isFree: true,
+      planId: "free"
     },
     {
       title: "Pro",
-      price: "$29",
+      price: "R$ 80",
       period: "/mês",
-      description: "Para traders que buscam consistência.",
+      description: "Para traders profissionais.",
       features: [
         "Análises ilimitadas",
-        "Todos os timeframes",
-        "Alertas avançados",
-        "Watchlist inteligente",
-        "Histórico completo",
-        "Suporte prioritário",
+        "Análise avançada de IA",
+        "Histórico ilimitado",
+        "Indicadores personalizados",
+        "Alertas em tempo real",
+        "API de acesso",
+        "Suporte prioritário 24/7",
       ],
-      cta: "Escolher Pro",
+      cta: "Assinar Pro",
       isPopular: true,
-      isFree: false
+      isFree: false,
+      planId: "pro"
     },
   ];
+
+  const handleUpgrade = async (planId: string) => {
+    if (planId === 'free') return;
+
+    // Verificar se está logado
+    if (!isSignedIn) {
+      // Salvar o plano desejado no sessionStorage
+      sessionStorage.setItem('pendingPlanUpgrade', planId);
+      
+      // Redirecionar para login com retorno para checkout
+      window.location.href = '/sign-in';
+      return;
+    }
+
+    try {
+      setLoading(true);
+
+      const token = await getToken();
+      if (!token) {
+        toast({
+          title: 'Erro',
+          description: 'Não foi possível obter token de autenticação',
+          variant: 'destructive',
+        });
+        setLoading(false);
+        setProcessingUpgrade(false);
+        return;
+      }
+
+      console.log('[PricingSection] Criando sessão Stripe...');
+
+      // Criar sessão de checkout com timeout
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Timeout ao conectar com servidor')), 10000)
+      );
+
+      const checkoutPromise = createCheckoutSession(planId as 'pro', token);
+
+      const { url } = await Promise.race([checkoutPromise, timeoutPromise]) as any;
+
+      console.log('[PricingSection] Sessão criada, redirecionando...');
+
+      // Limpar o plano pendente
+      sessionStorage.removeItem('pendingPlanUpgrade');
+
+      // Redirecionar para Stripe Checkout
+      window.location.href = url;
+    } catch (error: any) {
+      console.error('[PricingSection] Erro ao criar checkout:', error);
+      
+      // Limpar estados
+      sessionStorage.removeItem('pendingPlanUpgrade');
+      setLoading(false);
+      setProcessingUpgrade(false);
+
+      toast({
+        title: 'Erro ao processar pagamento',
+        description: error.message || 'Falha ao criar sessão de checkout. Verifique se o backend está rodando.',
+        variant: 'destructive',
+      });
+    }
+  };
+
+  // Verificar se há upgrade pendente após login
+  useEffect(() => {
+    const processUpgrade = async () => {
+      if (isLoaded && isSignedIn && !processingUpgrade) {
+        const pendingPlan = sessionStorage.getItem('pendingPlanUpgrade');
+        
+        if (pendingPlan) {
+          console.log('[PricingSection] Processando upgrade pendente:', pendingPlan);
+          setProcessingUpgrade(true);
+          
+          try {
+            await handleUpgrade(pendingPlan);
+          } catch (error) {
+            console.error('[PricingSection] Erro ao processar upgrade:', error);
+            sessionStorage.removeItem('pendingPlanUpgrade');
+            setProcessingUpgrade(false);
+          }
+        }
+      }
+    };
+
+    processUpgrade();
+  }, [isLoaded, isSignedIn]);
+
+  // Mostrar loading se estiver processando upgrade
+  if (processingUpgrade) {
+    return (
+      <section id="pricing" className="py-20 md:py-28">
+        <div className="container">
+          <div className="flex flex-col items-center justify-center min-h-[400px] gap-4">
+            <div className="w-12 h-12 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+            <p className="text-lg text-muted-foreground">Processando seu upgrade...</p>
+            <p className="text-sm text-muted-foreground">Redirecionando para pagamento</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section id="pricing" className="py-20 md:py-28">
@@ -88,8 +199,20 @@ const PricingSection = () => {
                       </Button>
                     </SignInButton>
                   ) : (
-                    <Button className="w-full" variant="default" disabled>
-                      Em Breve
+                    <Button 
+                      className="w-full" 
+                      variant="default"
+                      onClick={() => handleUpgrade(plan.planId)}
+                      disabled={loading}
+                    >
+                      {loading ? (
+                        <div className="flex items-center gap-2">
+                          <div className="w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin" />
+                          Processando...
+                        </div>
+                      ) : (
+                        plan.cta
+                      )}
                     </Button>
                   )}
                 </CardFooter>

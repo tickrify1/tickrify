@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -21,7 +21,7 @@ type View = 'new-analysis' | 'my-trades' | 'watchlist' | 'analysis-result' | 'lo
 const DashboardPage = () => {
   const [activeView, setActiveView] = useState<View>('new-analysis');
   const [uploadedImage, setUploadedImage] = useState<string | null>(null);
-  const [uploadedFile, setUploadedFile] = useState<File | null>(null);
+  const [_uploadedFile, setUploadedFile] = useState<File | null>(null);
   const [analysisData, setAnalysisData] = useState<AIAnalysisResponse | null>(null);
   const [errorMessage, setErrorMessage] = useState<string>('');
   const [showUpgradeModal, setShowUpgradeModal] = useState(false);
@@ -31,17 +31,51 @@ const DashboardPage = () => {
   const apiClient = useAPIClient();
   const isDemo = !user; // Se não está logado, é modo demo
 
-  const activeMarkets = [
+  // Dados de exemplo APENAS para modo DEMO
+  const demoActiveMarkets = [
     { name: "BTC/USD", change: "+2.5%", isUp: true },
     { name: "EUR/USD", change: "-0.1%", isUp: false },
     { name: "AAPL", change: "+1.2%", isUp: true },
   ];
 
-  const recentAnalyses = [
+  const demoRecentAnalyses = [
     { symbol: "ETH/USD", timeframe: "4H", status: "COMPRA" },
     { symbol: "TSLA", timeframe: "1D", status: "AGUARDAR" },
     { symbol: "XAU/USD", timeframe: "1H", status: "VENDA" },
   ];
+
+  // Estados para dados REAIS da API
+  const [recentAnalyses, setRecentAnalyses] = useState<any[]>([]);
+  const [loadingAnalyses, setLoadingAnalyses] = useState(false);
+
+  // Buscar análises reais quando logado
+  useEffect(() => {
+    if (!isDemo && user) {
+      fetchRecentAnalyses();
+    }
+  }, [isDemo, user]);
+
+  const fetchRecentAnalyses = async () => {
+    try {
+      setLoadingAnalyses(true);
+      const analyses = await apiClient.listAnalyses();
+      // Pegar as 3 mais recentes
+      const recent = analyses.slice(0, 3).map((a: any) => ({
+        symbol: 'Análise #' + a.id.slice(0, 8),
+        timeframe: new Date(a.createdAt).toLocaleDateString('pt-BR'),
+        status: a.recommendation || 'PROCESSANDO',
+      }));
+      setRecentAnalyses(recent);
+    } catch (error) {
+      console.error('Erro ao buscar análises:', error);
+    } finally {
+      setLoadingAnalyses(false);
+    }
+  };
+
+  // Usar dados demo ou reais dependendo do modo
+  const activeMarkets = isDemo ? demoActiveMarkets : [];
+  const displayRecentAnalyses = isDemo ? demoRecentAnalyses : recentAnalyses;
 
   const handleStartAnalysis = async (imageUrl: string | null = null, imageFile: File | null = null) => {
     // Modo DEMO: apenas simula, não faz análise real
@@ -236,19 +270,42 @@ const DashboardPage = () => {
                 ))}
               </CardContent>
             </Card>
-            <Card>
-              <CardHeader>
-                <CardTitle>Últimas Análises</CardTitle>
-              </CardHeader>
-              <CardContent className="grid gap-3">
-                {recentAnalyses.map(analysis => (
-                  <div key={analysis.symbol} className="flex items-center justify-between text-sm">
-                    <span className="font-medium">{analysis.symbol} <span className="text-muted-foreground">{analysis.timeframe}</span></span>
-                    <span className={`font-semibold ${analysis.status === 'COMPRA' ? 'text-green-500' : analysis.status === 'VENDA' ? 'text-red-500' : 'text-yellow-500'}`}>{analysis.status}</span>
-                  </div>
-                ))}
-              </CardContent>
-            </Card>
+            {!isDemo && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Últimas Análises</CardTitle>
+                </CardHeader>
+                <CardContent className="grid gap-3">
+                  {loadingAnalyses ? (
+                    <p className="text-sm text-muted-foreground text-center py-4">Carregando...</p>
+                  ) : displayRecentAnalyses.length > 0 ? (
+                    displayRecentAnalyses.map((analysis, idx) => (
+                      <div key={idx} className="flex items-center justify-between text-sm">
+                        <span className="font-medium">{analysis.symbol} <span className="text-muted-foreground">{analysis.timeframe}</span></span>
+                        <span className={`font-semibold ${analysis.status === 'BUY' || analysis.status === 'COMPRA' ? 'text-green-500' : analysis.status === 'SELL' || analysis.status === 'VENDA' ? 'text-red-500' : 'text-yellow-500'}`}>{analysis.status}</span>
+                      </div>
+                    ))
+                  ) : (
+                    <p className="text-sm text-muted-foreground text-center py-4">Nenhuma análise ainda. Faça sua primeira!</p>
+                  )}
+                </CardContent>
+              </Card>
+            )}
+            {isDemo && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>Últimas Análises</CardTitle>
+                </CardHeader>
+                <CardContent className="grid gap-3">
+                  {displayRecentAnalyses.map((analysis, idx) => (
+                    <div key={idx} className="flex items-center justify-between text-sm">
+                      <span className="font-medium">{analysis.symbol} <span className="text-muted-foreground">{analysis.timeframe}</span></span>
+                      <span className={`font-semibold ${analysis.status === 'COMPRA' ? 'text-green-500' : analysis.status === 'VENDA' ? 'text-red-500' : 'text-yellow-500'}`}>{analysis.status}</span>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            )}
           </div>
           <div className="flex flex-col gap-8">
             {renderContent()}

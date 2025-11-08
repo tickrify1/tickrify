@@ -1,0 +1,12 @@
+[phases.setup]
+nixPkgs = ["nodejs-18_x", "postgresql"]
+
+[phases.install]
+cmds = ["npm install"]
+
+[phases.build]
+cmds = ["npm run build -w apps/backend", "cd apps/backend && npx prisma generate"]
+
+[start]
+cmd = "cd apps/backend && npm run start:prod"
+
