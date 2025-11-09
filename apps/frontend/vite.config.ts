@@ -8,8 +8,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      // Adicionado para resolver conflitos de múltiplas instâncias do React
-      'react': path.resolve(__dirname, './node_modules/react'),
+      // Resolver para o node_modules da raiz do monorepo
+      'react': path.resolve(__dirname, '../../node_modules/react'),
+      'react-dom': path.resolve(__dirname, '../../node_modules/react-dom'),
     },
   },
   optimizeDeps: {
