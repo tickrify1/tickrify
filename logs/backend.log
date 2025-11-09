@@ -141,3 +141,53 @@ The column `User.plan` does not exist in the current database.
     at async AiController.listAnalyses (/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:20)
     at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-execution-context.js:46:28
     at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 68593  - 11/08/2025, 2:51:07 PM   ERROR [ExceptionsHandler] 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+    at $n.handleRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:7315)
+    at $n.handleAndLogRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async AiController.listAnalyses (/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:20)
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[Nest] 68593  - 11/08/2025, 2:51:07 PM   ERROR [ExceptionsHandler] 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+PrismaClientKnownRequestError: 
+Invalid `this.prisma.user.findUnique()` invocation in
+/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:43
+
+  90   @CurrentUser() user: { clerkUserId: string },
+  91   @Query('limit') limit?: string,
+  92 ) {
+→ 93   const dbUser = await this.prisma.user.findUnique(
+The column `User.plan` does not exist in the current database.
+    at $n.handleRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:7315)
+    at $n.handleAndLogRequestError (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6623)
+    at $n.request (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:121:6307)
+    at async l (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@prisma/client/runtime/library.js:130:9633)
+    at async AiController.listAnalyses (/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:20)
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-execution-context.js:46:28
+    at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-proxy.js:9:17
