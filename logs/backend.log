@@ -191,3 +191,95 @@ The column `User.plan` does not exist in the current database.
     at async AiController.listAnalyses (/Users/vini.mqs/Documents/tickrify_novo/apps/backend/src/modules/ai/ai.controller.ts:93:20)
     at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-execution-context.js:46:28
     at async /Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/router/router-proxy.js:9:17
+[2J[3J[H[[90m11:43:03 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m11:43:06 PM[0m] Found 0 errors. Watching for file changes.
+
+Starting October 8, 2024, the Node SDK is entering a three-month notice period. We encourage everyone to migrate to @clerk/express. For full details, please see our changelog: https://clerk.com/changelog/2024-10-08-express-sdk
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [NestFactory] Starting Nest application...
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] AppModule dependencies initialized +7ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] MulterModule dependencies initialized +1ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] DatabaseModule dependencies initialized +16ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] StorageModule dependencies initialized +0ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] ConfigHostModule dependencies initialized +13ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] ConfigModule dependencies initialized +1ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] PaymentsModule dependencies initialized +0ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] PromptModule dependencies initialized +0ms
+[Nest] 50854  - 11/08/2025, 11:43:07 PM     LOG [InstanceLoader] AiModule dependencies initialized +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RoutesResolver] AuthController {/api/auth}: +208ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/auth/me, GET} route +1ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RoutesResolver] StripeController {/stripe}: +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/stripe/create-checkout-session, POST} route +1ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/stripe/create-customer-portal, POST} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/stripe/cancel-subscription, POST} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/stripe/reactivate-subscription, POST} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/stripe/subscription, GET} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/stripe/webhook, POST} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RoutesResolver] AiController {/api/ai}: +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/ai/analyze, POST} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/ai/analysis/:id, GET} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/ai/analyses, GET} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RoutesResolver] PromptController {/api/prompts}: +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/prompts/config, POST} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/prompts/latest, GET} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/prompts/list, GET} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/prompts/:version, GET} route +1ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [RouterExplorer] Mapped {/api/prompts/:version/activate, POST} route +0ms
+[Nest] 50854  - 11/08/2025, 11:43:08 PM     LOG [NestApplication] Nest application successfully started +456ms
+🚀 Backend running on http://localhost:3001
+[2J[3J[H[[90m11:43:19 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/modules/ai/ai.service.ts[0m:[93m4[0m:[93m10[0m - [91merror[0m[90m TS2305: [0mModule '"./ai.queue"' has no exported member 'aiQueue'.
+
+[7m4[0m import { aiQueue } from './ai.queue';
+[7m [0m [91m         ~~~~~~~[0m
+
+[[90m11:43:20 PM[0m] Found 1 error. Watching for file changes.
+
+[2J[3J[H[[90m11:43:22 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/modules/ai/ai.service.ts[0m:[93m66[0m:[93m13[0m - [91merror[0m[90m TS2304: [0mCannot find name 'aiQueue'.
+
+[7m66[0m       await aiQueue.add('process-analysis', {
+[7m  [0m [91m            ~~~~~~~[0m
+
+[[90m11:43:22 PM[0m] Found 1 error. Watching for file changes.
+
+[2J[3J[H[[90m11:43:26 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m11:43:26 PM[0m] Found 0 errors. Watching for file changes.
+
+Starting October 8, 2024, the Node SDK is entering a three-month notice period. We encourage everyone to migrate to @clerk/express. For full details, please see our changelog: https://clerk.com/changelog/2024-10-08-express-sdk
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [NestFactory] Starting Nest application...
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] AppModule dependencies initialized +7ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] MulterModule dependencies initialized +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] DatabaseModule dependencies initialized +12ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] StorageModule dependencies initialized +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] ConfigHostModule dependencies initialized +15ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] ConfigModule dependencies initialized +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] PaymentsModule dependencies initialized +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] AuthModule dependencies initialized +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] PromptModule dependencies initialized +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [InstanceLoader] AiModule dependencies initialized +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RoutesResolver] AuthController {/api/auth}: +156ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/auth/me, GET} route +2ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RoutesResolver] StripeController {/stripe}: +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/stripe/create-checkout-session, POST} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/stripe/create-customer-portal, POST} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/stripe/cancel-subscription, POST} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/stripe/reactivate-subscription, POST} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/stripe/subscription, GET} route +1ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/stripe/webhook, POST} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RoutesResolver] AiController {/api/ai}: +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/ai/analyze, POST} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/ai/analysis/:id, GET} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/ai/analyses, GET} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RoutesResolver] PromptController {/api/prompts}: +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/prompts/config, POST} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/prompts/latest, GET} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/prompts/list, GET} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/prompts/:version, GET} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/prompts/:version/activate, POST} route +0ms
+[Nest] 51090  - 11/08/2025, 11:43:28 PM     LOG [NestApplication] Nest application successfully started +361ms
+🚀 Backend running on http://localhost:3001
