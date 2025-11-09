@@ -1,0 +1,13 @@
+# Ignorar arquivos desnecessários no Railway
+node_modules/
+.git/
+.github/
+*.log
+*.md
+dumps/
+logs/
+
+# Ignorar frontend (não usado no deploy do backend)
+apps/frontend/
+src/
+

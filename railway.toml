@@ -1,6 +1,6 @@
 [build]
 builder = "nixpacks"
-buildCommand = "npm install && npm run build -w apps/backend && npx prisma migrate deploy -w apps/backend"
+buildCommand = "npm install && npm run build -w apps/backend && cd apps/backend && npx prisma migrate deploy"
 
 [deploy]
 startCommand = "npm run start:prod -w apps/backend"
