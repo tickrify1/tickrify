@@ -1,7 +1,7 @@
-import { Injectable, BadRequestException } from '@nestjs/common';
+import { Injectable, BadRequestException, ServiceUnavailableException } from '@nestjs/common';
 import { PrismaService } from '../database/prisma.service';
 import { S3Service } from '../storage/s3.service';
-import { aiQueue } from './ai.queue';
+import { getAiQueue } from './ai.queue';
 
 @Injectable()
 export class AiService {
@@ -63,7 +63,23 @@ export class AiService {
 
       // Enfileirar job para processamento
       console.log('[AiService] Adding job to queue...');
-      await aiQueue.add('process-analysis', {
+      const queue = getAiQueue();
+      
+      if (!queue) {
+        // In serverless without Redis, mark as failed
+        await this.prisma.analysis.update({
+          where: { id: analysis.id },
+          data: { 
+            status: 'error',
+            reasoning: 'Queue service not available in serverless environment. Please configure Redis or use a dedicated worker service.'
+          }
+        });
+        throw new ServiceUnavailableException(
+          'Analysis queue not available. Please contact support or try again later.'
+        );
+      }
+      
+      await queue.add('process-analysis', {
         analysisId: analysis.id,
         imageUrl,
         promptOverride,
