@@ -6,9 +6,9 @@ cmds = ["npm install"]
 
 [phases.build]
 cmds = [
-  "npm run build -w apps/backend", 
-  "cd apps/backend && npx prisma generate",
-  "cd apps/backend && npx prisma migrate deploy"
+  "npm run build -w apps/backend",
+  "npx prisma generate --schema=apps/backend/prisma/schema.prisma",
+  "npx prisma migrate deploy --schema=apps/backend/prisma/schema.prisma"
 ]
 
 [start]
