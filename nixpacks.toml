@@ -5,7 +5,11 @@ nixPkgs = ["nodejs-18_x", "postgresql"]
 cmds = ["npm install"]
 
 [phases.build]
-cmds = ["npm run build -w apps/backend", "cd apps/backend && npx prisma generate"]
+cmds = [
+  "npm run build -w apps/backend", 
+  "cd apps/backend && npx prisma generate",
+  "cd apps/backend && npx prisma migrate deploy"
+]
 
 [start]
 cmd = "cd apps/backend && npm run start:prod"
