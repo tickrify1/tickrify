@@ -84,3 +84,17 @@ railway logs
 
 Ou acesse o dashboard: https://railway.app/project/seu-projeto/deployments
 
+## ⚙️ Configuração recomendada no Railway (UI)
+
+- Builder: Dockerfile
+- Start Command: (deixe em branco para usar o CMD do Dockerfile) ou:
+  ```
+  npm run start:prod
+  ```
+- Deploy Command (sem usar `cd`):
+  ```
+  npx prisma migrate deploy --schema=/app/apps/backend/prisma/schema.prisma
+  ```
+
+Observação: Nunca use `cd ...` no Start/Deploy Command da UI. O Dockerfile já define `WORKDIR /app/apps/backend`.
+
