@@ -9,8 +9,9 @@ export class LocalStorageService {
   private uploadDir: string;
 
   constructor() {
-    // Salvar imagens localmente em uploads/
-    this.uploadDir = join(process.cwd(), 'uploads');
+    // Em ambientes serverless (como Vercel), apenas /tmp é gravável
+    const isServerless = !!process.env.VERCEL || process.env.NODE_ENV === 'production';
+    this.uploadDir = isServerless ? '/tmp/uploads' : join(process.cwd(), 'uploads');
     this.ensureUploadDirExists();
   }
 

@@ -1,5 +1,5 @@
 import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from '@nestjs/common';
-import { clerkClient } from '@clerk/clerk-sdk-node';
+import { verifyToken } from '@clerk/express';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -12,8 +12,8 @@ export class AuthGuard implements CanActivate {
     }
 
     try {
-      const sessionClaims = await clerkClient.verifyToken(token);
-      request.user = { clerkUserId: sessionClaims.sub };
+      const sessionClaims: any = await verifyToken(token);
+      request.user = { clerkUserId: sessionClaims?.sub };
       return true;
     } catch (error) {
       throw new UnauthorizedException('Invalid token');

@@ -283,3 +283,16 @@ Starting October 8, 2024, the Node SDK is entering a three-month notice period. 
 [Nest] 51090  - 11/08/2025, 11:43:27 PM     LOG [RouterExplorer] Mapped {/api/prompts/:version/activate, POST} route +0ms
 [Nest] 51090  - 11/08/2025, 11:43:28 PM     LOG [NestApplication] Nest application successfully started +361ms
 🚀 Backend running on http://localhost:3001
+[2J[3J[H[[90m10:58:47 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m10:58:49 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m12:17:35 AM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/modules/auth/auth.guard.ts[0m:[93m2[0m:[93m29[0m - [91merror[0m[90m TS2307: [0mCannot find module '@clerk/express' or its corresponding type declarations.
+
+[7m2[0m import { verifyToken } from '@clerk/express';
+[7m [0m [91m                            ~~~~~~~~~~~~~~~~[0m
+
+[[90m12:17:38 AM[0m] Found 1 error. Watching for file changes.
+
