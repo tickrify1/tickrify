@@ -1,41 +1,38 @@
 {
-  "functions": {
-    "src/vercel.ts": {
-      "maxDuration": 300,
-      "memory": 1024,
-      "includeFiles": [
-        "prisma/**",
-        "node_modules/.prisma/**",
-        "node_modules/@prisma/**"
-      ]
-    }
-  },
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "src/vercel.ts"
-    }
-  ]
-}
-{
   "version": 2,
   "builds": [
     {
-      "src": "src/vercel.ts",
+      "src": "dist/src/vercel.js",
       "use": "@vercel/node",
       "config": {
-        "maxLambdaSize": "50mb"
+        "maxLambdaSize": "50mb",
+        "includeFiles": [
+          "dist/**",
+          "prisma/**",
+          "node_modules/.prisma/**",
+          "node_modules/@prisma/client/**"
+        ]
       }
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/dist/src/vercel.js"
+    },
+    {
       "src": "/(.*)",
-      "dest": "src/vercel.ts"
+      "dest": "/dist/src/vercel.js"
     }
   ],
+  "functions": {
+    "dist/src/vercel.js": {
+      "maxDuration": 300,
+      "memory": 1024,
+      "runtime": "nodejs20.x"
+    }
+  },
   "env": {
     "NODE_ENV": "production"
   }
 }
-

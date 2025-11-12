@@ -1,6 +1,9 @@
 # Usar Node.js 20
 FROM node:20-bookworm-slim
 
+# OpenSSL para Prisma (evita warnings e problemas de runtime)
+RUN apt-get update -y && apt-get install -y --no-install-recommends openssl && rm -rf /var/lib/apt/lists/*
+
 # Definir diretório de trabalho
 WORKDIR /app
 

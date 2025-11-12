@@ -7,39 +7,135 @@ import express from 'express';
 
 let cachedServer: any;
 
+/**
+ * Bootstrap the NestJS application for serverless execution
+ * This function caches the server instance to improve cold start performance
+ */
 async function bootstrap() {
-  if (!cachedServer) {
-    const expressApp = express();
+  try {
+    if (!cachedServer) {
+      console.log('🚀 Initializing NestJS application for serverless...');
+      
+      const expressApp = express();
+      
+      const app = await NestFactory.create(
+        AppModule,
+        new ExpressAdapter(expressApp),
+        {
+          rawBody: true,
+          logger: process.env.NODE_ENV === 'production' 
+            ? ['error', 'warn', 'log'] 
+            : ['error', 'warn', 'log', 'debug', 'verbose'],
+        },
+      );
+
+      // Configure CORS for serverless environment
+      const allowedOrigins = [
+        process.env.FRONTEND_URL,
+        'http://localhost:5173',
+        'http://localhost:5174',
+      ].filter(Boolean);
+
+      app.enableCors({
+        origin: (origin, callback) => {
+          // Allow requests with no origin (like mobile apps or curl)
+          if (!origin) return callback(null, true);
+          
+          if (allowedOrigins.some(allowed => origin.startsWith(allowed))) {
+            callback(null, true);
+          } else {
+            console.warn(`⚠️ Blocked CORS request from origin: ${origin}`);
+            callback(new Error('Not allowed by CORS'));
+          }
+        },
+        credentials: true,
+        methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+        allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+      });
+
+      // Global validation pipe
+      app.useGlobalPipes(
+        new ValidationPipe({
+          whitelist: true,
+          transform: true,
+          forbidNonWhitelisted: true,
+          transformOptions: {
+            enableImplicitConversion: true,
+          },
+        }),
+      );
+
+      // Add global error handling
+      app.useGlobalFilters();
+
+      await app.init();
+      
+      cachedServer = serverlessExpress({ app: expressApp });
+      console.log('✅ NestJS application initialized successfully');
+    }
     
-    const app = await NestFactory.create(
-      AppModule,
-      new ExpressAdapter(expressApp),
-      {
-        rawBody: true,
-        logger: ['error', 'warn', 'log'],
-      },
-    );
-
-    app.enableCors({
-      origin: process.env.FRONTEND_URL,
-      credentials: true,
-    });
-
-    app.useGlobalPipes(
-      new ValidationPipe({
-        whitelist: true,
-        transform: true,
-      }),
-    );
-
-    await app.init();
-    cachedServer = serverlessExpress({ app: expressApp });
+    return cachedServer;
+  } catch (error) {
+    console.error('❌ Failed to initialize NestJS application:', error);
+    throw error;
   }
-  return cachedServer;
 }
 
+/**
+ * Serverless handler for Vercel
+ * Exports a handler function that Vercel will call for each request
+ */
 export default async function handler(event: any, context: any) {
-  const server = await bootstrap();
-  return server(event, context);
+  try {
+    // Set callbackWaitsForEmptyEventLoop to false to allow the function to return
+    // immediately after the callback is called, even if there are events in the Node.js event loop
+    context.callbackWaitsForEmptyEventLoop = false;
+
+    // Log request info (helpful for debugging)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('📥 Incoming request:', {
+        path: event.path || event.rawPath,
+        method: event.httpMethod || event.requestContext?.http?.method,
+        headers: event.headers,
+      });
+    }
+
+    const server = await bootstrap();
+    const result = await server(event, context);
+
+    // Log response info (helpful for debugging)
+    if (process.env.NODE_ENV !== 'production') {
+      console.log('📤 Outgoing response:', {
+        statusCode: result.statusCode,
+      });
+    }
+
+    return result;
+  } catch (error) {
+    console.error('❌ Serverless handler error:', error);
+    
+    // Return a proper error response
+    return {
+      statusCode: 500,
+      headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': process.env.FRONTEND_URL || '*',
+        'Access-Control-Allow-Credentials': 'true',
+      },
+      body: JSON.stringify({
+        statusCode: 500,
+        message: 'Internal Server Error',
+        error: process.env.NODE_ENV === 'production' 
+          ? 'An error occurred while processing your request'
+          : error.message,
+        timestamp: new Date().toISOString(),
+      }),
+    };
+  }
 }
 
+/**
+ * For local development, you can also export the bootstrap function
+ * to start the server in a non-serverless environment
+ */
+export { bootstrap };
