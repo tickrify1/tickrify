@@ -33,7 +33,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 # Expor porta do backend
 EXPOSE 3000
 
-# Comando de start
-WORKDIR /app/apps/backend
-CMD ["/usr/local/bin/docker-entrypoint.sh"]
+# EntryPoint garante execução do script mesmo se a plataforma definir um Start Command
+ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
+# Comando padrão (usado como args do entrypoint se Start Command for definido)
+CMD ["npm", "run", "start:prod"]
 
