@@ -25,9 +25,15 @@ RUN npm run build
 # Gerar Prisma Client
 RUN npx prisma generate --schema=./prisma/schema.prisma
 
-# Expor porta
+# Copiar entrypoint que roda migrations e inicia o servidor
+WORKDIR /app
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+# Expor porta do backend
 EXPOSE 3000
 
 # Comando de start
-CMD ["npm", "run", "start:prod"]
+WORKDIR /app/apps/backend
+CMD ["/usr/local/bin/docker-entrypoint.sh"]
 
