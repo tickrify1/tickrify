@@ -1,6 +1,8 @@
 generator client {
   provider        = "prisma-client-js"
   previewFeatures = ["multiSchema"]
+  // Necessário para Vercel (Node serverless em Debian/openssl 1.1)
+  binaryTargets   = ["native", "debian-openssl-1.1.x"]
 }
 
 datasource db {
