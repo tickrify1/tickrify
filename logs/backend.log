@@ -298,3 +298,733 @@ Starting October 8, 2024, the Node SDK is entering a three-month notice period. 
 
 [2J[3J[H[[90m12:40:53 AM[0m] File change detected. Starting incremental compilation...
 
+[[90m10:41:22 AM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m10:41:22 AM[0m] File change detected. Starting incremental compilation...
+
+[[90m10:41:23 AM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m10:41:33 AM[0m] File change detected. Starting incremental compilation...
+
+[[90m10:41:33 AM[0m] Found 0 errors. Watching for file changes.
+
+/Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/adapters/index.js:4
+tslib_1.__exportStar(require("./http-adapter"), exports);
+        ^
+
+TypeError: tslib_1.__exportStar is not a function
+    at Object.<anonymous> (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/adapters/index.js:4:9)
+    at Module._compile (node:internal/modules/cjs/loader:1760:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1480:32)
+    at Module._load (node:internal/modules/cjs/loader:1299:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@nestjs/core/index.js:12:22)
+
+Node.js v24.11.0
+[2J[3J[H[[90m10:45:23 AM[0m] File change detected. Starting incremental compilation...
+
+[[90m10:45:24 AM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m10:45:46 AM[0m] File change detected. Starting incremental compilation...
+
+[[90m10:45:47 AM[0m] Found 0 errors. Watching for file changes.
+
+/Users/vini.mqs/Documents/tickrify_novo/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/index.js:277
+class SignatureV4S3Express extends signatureV4.SignatureV4 {
+                                               ^
+
+TypeError: Class extends value undefined is not a constructor or null
+    at Object.<anonymous> (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@aws-sdk/middleware-sdk-s3/dist-cjs/index.js:277:48)
+    at Module._compile (node:internal/modules/cjs/loader:1760:14)
+    at Object..js (node:internal/modules/cjs/loader:1893:10)
+    at Module.load (node:internal/modules/cjs/loader:1480:32)
+    at Module._load (node:internal/modules/cjs/loader:1299:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at require (node:internal/modules/helpers:152:16)
+    at Object.<anonymous> (/Users/vini.mqs/Documents/tickrify_novo/node_modules/@aws-sdk/client-s3/dist-cjs/index.js:8:23)
+
+Node.js v24.11.0
+[2J[3J[H[[90m3:19:26 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m3:19:27 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:20:13 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m3:20:13 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:25:45 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m3:25:46 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:26:50 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m3:26:51 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:32:50 PM[0m] File change detected. Starting incremental compilation...
+
+[[90m3:32:50 PM[0m] Found 0 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:32:54 PM[0m] File change detected. Starting incremental compilation...
+
+[96msrc/modules/ai/ai.controller.ts[0m:[93m30[0m:[93m27[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'Express'.
+
+[7m30[0m     @UploadedFile() file: Express.Multer.File,
+[7m  [0m [91m                          ~~~~~~~[0m
+
+[96msrc/modules/ai/ai.service.ts[0m:[93m15[0m:[93m17[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'Express'.
+
+[7m15[0m     imageFile?: Express.Multer.File,
+[7m  [0m [91m                ~~~~~~~[0m
+
+[96msrc/modules/storage/local.service.ts[0m:[93m24[0m:[93m27[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'Express'.
+
+[7m24[0m   async uploadImage(file: Express.Multer.File, userId: string): Promise<string> {
+[7m  [0m [91m                          ~~~~~~~[0m
+
+[96msrc/modules/storage/s3.service.ts[0m:[93m21[0m:[93m27[0m - [91merror[0m[90m TS2503: [0mCannot find namespace 'Express'.
+
+[7m21[0m   async uploadImage(file: Express.Multer.File, userId: string): Promise<string> {
+[7m  [0m [91m                          ~~~~~~~[0m
+
+[96msrc/vercel.ts[0m:[93m6[0m:[93m21[0m - [91merror[0m[90m TS2307: [0mCannot find module 'express' or its corresponding type declarations.
+
+[7m6[0m import express from 'express';
+[7m [0m [91m                    ~~~~~~~~~[0m
+
+[[90m3:32:54 PM[0m] Found 5 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:32:57 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Boolean'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Function'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'IArguments'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'RegExp'.
+
+[91merror[0m[90m TS6053: [0mFile '/Users/vini.mqs/Documents/tickrify_novo/node_modules/typescript/lib/lib.es2021.full.d.ts' not found.
+  The file is in the program because:
+    Default library for target 'es2021'
+
+[[90m3:32:57 PM[0m] Found 7 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:32:59 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Boolean'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Function'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'IArguments'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'RegExp'.
+
+[91merror[0m[90m TS6053: [0mFile '/Users/vini.mqs/Documents/tickrify_novo/node_modules/typescript/lib/lib.es2021.full.d.ts' not found.
+  The file is in the program because:
+    Default library for target 'es2021'
+
+[[90m3:32:59 PM[0m] Found 7 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:33:00 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Boolean'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Function'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'IArguments'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'RegExp'.
+
+[91merror[0m[90m TS6053: [0mFile '/Users/vini.mqs/Documents/tickrify_novo/node_modules/typescript/lib/lib.es2021.full.d.ts' not found.
+  The file is in the program because:
+    Default library for target 'es2021'
+
+[[90m3:33:00 PM[0m] Found 7 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:33:01 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Array'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Boolean'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Function'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'IArguments'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'RegExp'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'String'.
+
+[91merror[0m[90m TS6053: [0mFile '/Users/vini.mqs/Documents/tickrify_novo/node_modules/typescript/lib/lib.es2021.full.d.ts' not found.
+  The file is in the program because:
+    Default library for target 'es2021'
+
+[[90m3:33:02 PM[0m] Found 9 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:34:05 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Array'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Boolean'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Function'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'IArguments'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'RegExp'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'String'.
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'babel__core'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__core'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'babel__generator'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__generator'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'babel__template'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__template'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'babel__traverse'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__traverse'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'body-parser'.
+  The file is in the program because:
+    Entry point for implicit type library 'body-parser'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'connect'.
+  The file is in the program because:
+    Entry point for implicit type library 'connect'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'cookiejar'.
+  The file is in the program because:
+    Entry point for implicit type library 'cookiejar'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-array'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-array'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-color'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-color'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-ease'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-ease'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-interpolate'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-interpolate'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-path'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-path'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-scale'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-scale'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-shape'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-shape'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-time'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-time'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-timer'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-timer'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'eslint'.
+  The file is in the program because:
+    Entry point for implicit type library 'eslint'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'eslint-scope'.
+  The file is in the program because:
+    Entry point for implicit type library 'eslint-scope'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'estree'.
+  The file is in the program because:
+    Entry point for implicit type library 'estree'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'express'.
+  The file is in the program because:
+    Entry point for implicit type library 'express'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'express-serve-static-core'.
+  The file is in the program because:
+    Entry point for implicit type library 'express-serve-static-core'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'graceful-fs'.
+  The file is in the program because:
+    Entry point for implicit type library 'graceful-fs'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'http-errors'.
+  The file is in the program because:
+    Entry point for implicit type library 'http-errors'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'istanbul-lib-coverage'.
+  The file is in the program because:
+    Entry point for implicit type library 'istanbul-lib-coverage'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'istanbul-lib-report'.
+  The file is in the program because:
+    Entry point for implicit type library 'istanbul-lib-report'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'istanbul-reports'.
+  The file is in the program because:
+    Entry point for implicit type library 'istanbul-reports'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'jest'.
+  The file is in the program because:
+    Entry point for implicit type library 'jest'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'json-schema'.
+  The file is in the program because:
+    Entry point for implicit type library 'json-schema'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'methods'.
+  The file is in the program because:
+    Entry point for implicit type library 'methods'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'mime'.
+  The file is in the program because:
+    Entry point for implicit type library 'mime'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'multer'.
+  The file is in the program because:
+    Entry point for implicit type library 'multer'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'node'.
+  The file is in the program because:
+    Entry point for implicit type library 'node'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'node-fetch'.
+  The file is in the program because:
+    Entry point for implicit type library 'node-fetch'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'phoenix'.
+  The file is in the program because:
+    Entry point for implicit type library 'phoenix'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'qs'.
+  The file is in the program because:
+    Entry point for implicit type library 'qs'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'range-parser'.
+  The file is in the program because:
+    Entry point for implicit type library 'range-parser'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'react'.
+  The file is in the program because:
+    Entry point for implicit type library 'react'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'react-dom'.
+  The file is in the program because:
+    Entry point for implicit type library 'react-dom'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'semver'.
+  The file is in the program because:
+    Entry point for implicit type library 'semver'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'send'.
+  The file is in the program because:
+    Entry point for implicit type library 'send'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'serve-static'.
+  The file is in the program because:
+    Entry point for implicit type library 'serve-static'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'stack-utils'.
+  The file is in the program because:
+    Entry point for implicit type library 'stack-utils'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'superagent'.
+  The file is in the program because:
+    Entry point for implicit type library 'superagent'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'supertest'.
+  The file is in the program because:
+    Entry point for implicit type library 'supertest'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'uuid'.
+  The file is in the program because:
+    Entry point for implicit type library 'uuid'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'yargs'.
+  The file is in the program because:
+    Entry point for implicit type library 'yargs'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'yargs-parser'.
+  The file is in the program because:
+    Entry point for implicit type library 'yargs-parser'
+
+[91merror[0m[90m TS6053: [0mFile '/Users/vini.mqs/Documents/tickrify_novo/node_modules/typescript/lib/lib.es2021.full.d.ts' not found.
+  The file is in the program because:
+    Default library for target 'es2021'
+
+[[90m3:34:05 PM[0m] Found 56 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:34:09 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Array'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Boolean'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Function'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'IArguments'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'RegExp'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'String'.
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'babel__core'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__core'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'babel__generator'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__generator'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'babel__template'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__template'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'babel__traverse'.
+  The file is in the program because:
+    Entry point for implicit type library 'babel__traverse'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'body-parser'.
+  The file is in the program because:
+    Entry point for implicit type library 'body-parser'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'connect'.
+  The file is in the program because:
+    Entry point for implicit type library 'connect'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'cookiejar'.
+  The file is in the program because:
+    Entry point for implicit type library 'cookiejar'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-array'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-array'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-color'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-color'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-ease'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-ease'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-interpolate'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-interpolate'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-path'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-path'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-scale'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-scale'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-shape'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-shape'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-time'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-time'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'd3-timer'.
+  The file is in the program because:
+    Entry point for implicit type library 'd3-timer'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'eslint'.
+  The file is in the program because:
+    Entry point for implicit type library 'eslint'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'eslint-scope'.
+  The file is in the program because:
+    Entry point for implicit type library 'eslint-scope'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'estree'.
+  The file is in the program because:
+    Entry point for implicit type library 'estree'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'express'.
+  The file is in the program because:
+    Entry point for implicit type library 'express'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'express-serve-static-core'.
+  The file is in the program because:
+    Entry point for implicit type library 'express-serve-static-core'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'graceful-fs'.
+  The file is in the program because:
+    Entry point for implicit type library 'graceful-fs'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'http-errors'.
+  The file is in the program because:
+    Entry point for implicit type library 'http-errors'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'istanbul-lib-coverage'.
+  The file is in the program because:
+    Entry point for implicit type library 'istanbul-lib-coverage'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'istanbul-lib-report'.
+  The file is in the program because:
+    Entry point for implicit type library 'istanbul-lib-report'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'istanbul-reports'.
+  The file is in the program because:
+    Entry point for implicit type library 'istanbul-reports'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'jest'.
+  The file is in the program because:
+    Entry point for implicit type library 'jest'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'json-schema'.
+  The file is in the program because:
+    Entry point for implicit type library 'json-schema'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'methods'.
+  The file is in the program because:
+    Entry point for implicit type library 'methods'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'mime'.
+  The file is in the program because:
+    Entry point for implicit type library 'mime'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'multer'.
+  The file is in the program because:
+    Entry point for implicit type library 'multer'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'node'.
+  The file is in the program because:
+    Entry point for implicit type library 'node'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'node-fetch'.
+  The file is in the program because:
+    Entry point for implicit type library 'node-fetch'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'phoenix'.
+  The file is in the program because:
+    Entry point for implicit type library 'phoenix'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'qs'.
+  The file is in the program because:
+    Entry point for implicit type library 'qs'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'range-parser'.
+  The file is in the program because:
+    Entry point for implicit type library 'range-parser'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'react'.
+  The file is in the program because:
+    Entry point for implicit type library 'react'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'react-dom'.
+  The file is in the program because:
+    Entry point for implicit type library 'react-dom'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'semver'.
+  The file is in the program because:
+    Entry point for implicit type library 'semver'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'send'.
+  The file is in the program because:
+    Entry point for implicit type library 'send'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'serve-static'.
+  The file is in the program because:
+    Entry point for implicit type library 'serve-static'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'stack-utils'.
+  The file is in the program because:
+    Entry point for implicit type library 'stack-utils'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'superagent'.
+  The file is in the program because:
+    Entry point for implicit type library 'superagent'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'supertest'.
+  The file is in the program because:
+    Entry point for implicit type library 'supertest'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'uuid'.
+  The file is in the program because:
+    Entry point for implicit type library 'uuid'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'yargs'.
+  The file is in the program because:
+    Entry point for implicit type library 'yargs'
+
+[91merror[0m[90m TS2688: [0mCannot find type definition file for 'yargs-parser'.
+  The file is in the program because:
+    Entry point for implicit type library 'yargs-parser'
+
+[91merror[0m[90m TS6053: [0mFile '/Users/vini.mqs/Documents/tickrify_novo/node_modules/typescript/lib/lib.es2021.full.d.ts' not found.
+  The file is in the program because:
+    Default library for target 'es2021'
+
+[[90m3:34:10 PM[0m] Found 56 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:34:11 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2552: [0mCannot find name 'Boolean'. Did you mean 'GLboolean'?
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m3:34:12 PM[0m] Found 3 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:34:18 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2552: [0mCannot find name 'Boolean'. Did you mean 'GLboolean'?
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m3:34:19 PM[0m] Found 3 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:34:23 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2552: [0mCannot find name 'Boolean'. Did you mean 'GLboolean'?
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m3:34:23 PM[0m] Found 3 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:34:24 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2552: [0mCannot find name 'Boolean'. Did you mean 'GLboolean'?
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m3:34:24 PM[0m] Found 3 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:36:31 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2552: [0mCannot find name 'Boolean'. Did you mean 'GLboolean'?
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m3:36:32 PM[0m] Found 3 errors. Watching for file changes.
+
+node:fs:440
+    return binding.readFileUtf8(path, stringToFlags(options.flag));
+                   ^
+
+Error: ECANCELED: operation canceled, read
+    at Object.readFileSync (node:fs:440:20)
+    at defaultLoadImpl (node:internal/modules/cjs/loader:1138:17)
+    at loadSource (node:internal/modules/cjs/loader:1787:20)
+    at Object..js (node:internal/modules/cjs/loader:1886:44)
+    at Module.load (node:internal/modules/cjs/loader:1480:32)
+    at Module._load (node:internal/modules/cjs/loader:1299:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:328:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:244:24)
+    at Module.require (node:internal/modules/cjs/loader:1503:12)
+    at require (node:internal/modules/helpers:152:16) {
+  errno: -89,
+  code: 'ECANCELED',
+  syscall: 'read'
+}
+
+Node.js v24.11.0
+[2J[3J[H[[90m3:38:13 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2552: [0mCannot find name 'Boolean'. Did you mean 'GLboolean'?
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m3:38:13 PM[0m] Found 3 errors. Watching for file changes.
+
+[2J[3J[H[[90m3:38:14 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2552: [0mCannot find name 'Boolean'. Did you mean 'GLboolean'?
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m3:38:14 PM[0m] Found 3 errors. Watching for file changes.
+
+[2J[3J[H[[90m4:08:26 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2552: [0mCannot find name 'Boolean'. Did you mean 'GLboolean'?
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m4:08:28 PM[0m] Found 3 errors. Watching for file changes.
+
+[2J[3J[H[[90m4:11:52 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Boolean'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m4:11:53 PM[0m] Found 3 errors. Watching for file changes.
+
+[2J[3J[H[[90m4:14:01 PM[0m] File change detected. Starting incremental compilation...
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Boolean'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Number'.
+
+[91merror[0m[90m TS2318: [0mCannot find global type 'Object'.
+
+[[90m4:14:01 PM[0m] Found 3 errors. Watching for file changes.
+

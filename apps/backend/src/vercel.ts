@@ -65,6 +65,9 @@ async function bootstrap() {
         }),
       );
 
+      // Set global prefix
+      app.setGlobalPrefix('api');
+
       // Add global error handling
       app.useGlobalFilters();
 

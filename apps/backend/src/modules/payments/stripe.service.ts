@@ -18,14 +18,14 @@ export class StripeService {
    * Criar sessão de checkout
    */
   async createCheckoutSession(
-    userId: string,
+    clerkUserId: string,
     planType: PlanType,
     successUrl: string,
     cancelUrl: string,
   ) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId },
+        where: { clerkUserId },
       });
 
       if (!user) {
@@ -54,7 +54,7 @@ export class StripeService {
 
         // Atualizar user com stripeCustomerId
         await this.prisma.user.update({
-          where: { id: userId },
+          where: { id: user.id },
           data: { stripeCustomerId: customerId },
         });
       }
@@ -75,12 +75,13 @@ export class StripeService {
         allow_promotion_codes: true,
         billing_address_collection: 'required',
         metadata: {
-          userId,
+          userId: user.id,
+          clerkUserId,
           planType,
         },
       });
 
-      this.logger.log(`Checkout session created: ${session.id} for user: ${userId}`);
+      this.logger.log(`Checkout session created: ${session.id} for user: ${clerkUserId}`);
 
       return {
         sessionId: session.id,
@@ -95,10 +96,10 @@ export class StripeService {
   /**
    * Criar portal do cliente
    */
-  async createCustomerPortal(userId: string, returnUrl: string) {
+  async createCustomerPortal(clerkUserId: string, returnUrl: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId },
+        where: { clerkUserId },
       });
 
       if (!user?.stripeCustomerId) {
@@ -122,10 +123,10 @@ export class StripeService {
   /**
    * Cancelar assinatura
    */
-  async cancelSubscription(userId: string) {
+  async cancelSubscription(clerkUserId: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId },
+        where: { clerkUserId },
       });
 
       if (!user?.stripeSubscriptionId) {
@@ -139,7 +140,7 @@ export class StripeService {
         },
       );
 
-      this.logger.log(`Subscription cancelled: ${subscription.id} for user: ${userId}`);
+      this.logger.log(`Subscription cancelled: ${subscription.id} for user: ${clerkUserId}`);
 
       return {
         subscriptionId: subscription.id,
@@ -155,10 +156,10 @@ export class StripeService {
   /**
    * Reativar assinatura
    */
-  async reactivateSubscription(userId: string) {
+  async reactivateSubscription(clerkUserId: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId },
+        where: { clerkUserId },
       });
 
       if (!user?.stripeSubscriptionId) {
@@ -172,7 +173,7 @@ export class StripeService {
         },
       );
 
-      this.logger.log(`Subscription reactivated: ${subscription.id} for user: ${userId}`);
+      this.logger.log(`Subscription reactivated: ${subscription.id} for user: ${clerkUserId}`);
 
       return {
         subscriptionId: subscription.id,
@@ -187,10 +188,10 @@ export class StripeService {
   /**
    * Obter assinatura do usuário
    */
-  async getUserSubscription(userId: string) {
+  async getUserSubscription(clerkUserId: string) {
     try {
       const user = await this.prisma.user.findUnique({
-        where: { id: userId },
+        where: { clerkUserId },
       });
 
       if (!user?.stripeSubscriptionId) {

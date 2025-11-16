@@ -67,7 +67,7 @@ const PricingSection = () => {
     try {
       setLoading(true);
 
-      const token = await getToken();
+        const token = await getToken();
       if (!token) {
         toast({
           title: 'Erro',

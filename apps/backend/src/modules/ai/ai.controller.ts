@@ -14,6 +14,7 @@ import { AuthGuard } from '../auth/auth.guard';
 import { CurrentUser } from '../../common/decorators/user.decorator';
 import { AiService } from './ai.service';
 import { PrismaService } from '../database/prisma.service';
+import { UploadedFile as UploadedFileType } from '../../common/interfaces/multer';
 
 @Controller('api/ai')
 export class AiController {
@@ -27,7 +28,7 @@ export class AiController {
   @UseInterceptors(FileInterceptor('image'))
   async analyze(
     @CurrentUser() user: { clerkUserId: string },
-    @UploadedFile() file: Express.Multer.File,
+    @UploadedFile() file: UploadedFileType,
     @Body('base64Image') base64Image?: string,
     @Body('promptOverride') promptOverride?: string,
   ) {

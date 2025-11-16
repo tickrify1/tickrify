@@ -47,7 +47,7 @@ model Subscription {
 model Analysis {
   id             String   @id @default(cuid())
   userId         String
-  imageUrl       String
+  imageUrl       String?  // Opcional - imagem não é mais salva para economizar espaço
   status         String   // queued, processing, done, failed
   recommendation String?  // "BUY", "SELL", "HOLD"
   confidence     Float?   // 0-100

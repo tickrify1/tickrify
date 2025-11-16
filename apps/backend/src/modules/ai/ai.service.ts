@@ -2,6 +2,7 @@ import { Injectable, BadRequestException, ServiceUnavailableException } from '@n
 import { PrismaService } from '../database/prisma.service';
 import { S3Service } from '../storage/s3.service';
 import { getAiQueue } from './ai.queue';
+import { UploadedFile } from '../../common/interfaces/multer';
 
 @Injectable()
 export class AiService {
@@ -12,7 +13,7 @@ export class AiService {
 
   async createAnalysis(
     userId: string,
-    imageFile?: Express.Multer.File,
+    imageFile?: UploadedFile,
     base64Image?: string,
     promptOverride?: string,
   ) {
@@ -23,17 +24,18 @@ export class AiService {
         hasBase64: !!base64Image 
       });
 
-      // Upload da imagem para S3 (ou storage local)
+      // Converter imagem para base64 temporário (NÃO salvar no S3 para economizar espaço)
       let imageUrl: string;
 
       if (imageFile) {
-        console.log('[AiService] Uploading file...', imageFile.originalname);
-        imageUrl = await this.s3Service.uploadImage(imageFile, userId);
-        console.log('[AiService] File uploaded:', imageUrl);
+        console.log('[AiService] Converting file to base64 (temporary)...', imageFile.originalname);
+        const base64 = imageFile.buffer.toString('base64');
+        imageUrl = `data:${imageFile.mimetype};base64,${base64}`;
+        console.log('[AiService] Image converted to base64 (not saved to S3)');
       } else if (base64Image) {
-        console.log('[AiService] Uploading base64 image...');
-        imageUrl = await this.s3Service.uploadBase64Image(base64Image, userId);
-        console.log('[AiService] Base64 uploaded');
+        console.log('[AiService] Using provided base64 image (temporary)...');
+        imageUrl = base64Image;
+        console.log('[AiService] Base64 image ready (not saved to S3)');
       } else {
         throw new BadRequestException('No image provided');
       }
@@ -49,12 +51,12 @@ export class AiService {
         console.log('[AiService] Using prompt version:', promptVersion);
       }
 
-      // Criar registro de análise com status "pending"
+      // Criar registro de análise com status "pending" (SEM salvar imageUrl para economizar espaço)
       console.log('[AiService] Creating analysis record...');
       const analysis = await this.prisma.analysis.create({
         data: {
           userId,
-          imageUrl,
+          imageUrl: null, // Não salvar imagem no banco - apenas resultado
           status: 'pending',
           promptVer: promptVersion,
         },

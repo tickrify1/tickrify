@@ -27,5 +27,7 @@ import { PromptModule } from './modules/prompt/prompt.module';
     PromptModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+  // O prefixo global 'api' é configurado no main.ts e vercel.ts
+}
 

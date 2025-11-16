@@ -3,6 +3,7 @@ import { writeFile, mkdir } from 'fs/promises';
 import { join } from 'path';
 import { v4 as uuidv4 } from 'uuid';
 import { existsSync } from 'fs';
+import { UploadedFile } from '../../common/interfaces/multer';
 
 @Injectable()
 export class LocalStorageService {
@@ -21,7 +22,7 @@ export class LocalStorageService {
     }
   }
 
-  async uploadImage(file: Express.Multer.File, userId: string): Promise<string> {
+  async uploadImage(file: UploadedFile, userId: string): Promise<string> {
     await this.ensureUploadDirExists();
 
     const filename = `${uuidv4()}-${file.originalname}`;

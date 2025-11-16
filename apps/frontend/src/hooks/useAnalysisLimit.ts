@@ -37,7 +37,7 @@ export function useAnalysisLimit(): AnalysisLimitData {
       const stored = localStorage.getItem(storageKey);
       setAnalysisCount(stored ? parseInt(stored, 10) : 0);
     }
-  }, [isLoaded, user]);
+  }, [isLoaded, user?.id]);
 
   // Se é demo, retorna valores que não importam (demo não usa limite)
   if (isDemo) {

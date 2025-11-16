@@ -6,6 +6,42 @@ Plataforma de análise técnica de gráficos de trading usando GPT-4 Vision, com
 
 ---
 
+## 🚀 INÍCIO RÁPIDO
+
+> **Status:** ✅ Projeto pronto para deploy
+
+### 📚 Guias Disponíveis
+
+| Guia | Descrição | Quando Usar |
+|------|-----------|-------------|
+| **[COMECE_AQUI.md](./COMECE_AQUI.md)** | 🎯 Guia super rápido | Quer começar AGORA |
+| **[GUIA_FINAL_DEPLOYMENT.md](./GUIA_FINAL_DEPLOYMENT.md)** | 📖 Guia completo passo a passo | Primeira vez fazendo deploy |
+| **[STATUS_PROJETO.md](./STATUS_PROJETO.md)** | ✅ Status e arquitetura | Quer entender o projeto |
+| Este README | 📋 Visão geral técnica | Referência geral |
+
+### ⚡ TL;DR - Deploy em 1 hora
+
+```bash
+# 1. Criar contas (Supabase, Clerk, Stripe, OpenAI, Vercel)
+# 2. Configurar .env
+cd apps/backend && cp .env.example .env
+cd apps/frontend && cp .env.example .env
+
+# 3. Testar localmente
+npm install
+npm run build  # Deve funcionar sem erros ✅
+
+# 4. Deploy
+vercel --prod
+
+# 5. Configurar webhook do Stripe
+# URL: https://seu-backend.vercel.app/api/stripe/webhook
+```
+
+**Leia:** [COMECE_AQUI.md](./COMECE_AQUI.md) para detalhes!
+
+---
+
 ## 🚀 FEATURES
 
 ### ✨ Análise com IA Avançada

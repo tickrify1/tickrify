@@ -2,7 +2,6 @@ import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { ArrowUp, ArrowDown, Minus, ShieldAlert, AlertCircle } from "lucide-react";
-import { useUser } from "@clerk/clerk-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import type { AIAnalysisResponse } from "@/lib/api";
 
@@ -12,11 +11,8 @@ interface AnalysisResultProps {
 }
 
 const AnalysisResult = ({ analysisData, uploadedImage }: AnalysisResultProps) => {
-    const { user } = useUser();
-    const isDemo = !user;
-
-    // DEMO MODE: Use mock data
-    if (isDemo || !analysisData) {
+    // Se não há dados de análise, mostrar modo demo
+    if (!analysisData) {
         return (
             <div className="space-y-8">
                 {/* Alerta de Demo */}
@@ -191,14 +187,24 @@ const AnalysisResult = ({ analysisData, uploadedImage }: AnalysisResultProps) =>
                         </CardHeader>
                         <CardContent>
                             <div className="aspect-video w-full rounded-lg bg-muted flex items-center justify-center overflow-hidden">
-                                {analysisData.imageUrl || uploadedImage ? (
+                                {uploadedImage ? (
                                     <img 
-                                        src={analysisData.imageUrl || uploadedImage || ''} 
+                                        src={uploadedImage} 
                                         alt="Gráfico analisado" 
                                         className="w-full h-full object-contain" 
                                     />
                                 ) : (
-                                    <p className="text-muted-foreground">Gráfico não disponível</p>
+                                    <div className="text-center p-8">
+                                        <div className="text-6xl mb-4">💡</div>
+                                        <p className="text-muted-foreground font-medium mb-2">
+                                            Imagem não disponível
+                                        </p>
+                                        <p className="text-sm text-muted-foreground">
+                                            Para economizar espaço, a imagem não é salva no histórico.
+                                            <br />
+                                            Apenas os resultados da análise são mantidos.
+                                        </p>
+                                    </div>
                                 )}
                             </div>
                         </CardContent>

@@ -29,7 +29,7 @@ const DashboardPage = () => {
   const incrementAnalysis = useIncrementAnalysis();
   const { user } = useUser();
   const apiClient = useAPIClient();
-  const isDemo = !user; // Se não está logado, é modo demo
+  const isDemo = !user;
 
   // Dados de exemplo APENAS para modo DEMO
   const demoActiveMarkets = [
@@ -217,7 +217,7 @@ const DashboardPage = () => {
           <div className="ml-auto flex-1 sm:flex-initial">
             {/* Search can be added here later */}
           </div>
-          <UserButton afterSignOutUrl="/" />
+          {user && <UserButton afterSignOutUrl="/" />}
         </div>
       </header>
       <main className="flex flex-1 flex-col gap-4 p-4 md:gap-8 md:p-8">

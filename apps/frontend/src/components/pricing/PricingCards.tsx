@@ -67,7 +67,7 @@ export function PricingCards() {
     try {
       setLoading(planId);
 
-      const token = await getToken();
+        const token = await getToken();
       if (!token) {
         toast({
           title: 'Erro',
