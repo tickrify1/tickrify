@@ -12,10 +12,8 @@
       "src": "apps/backend/src/vercel.ts",
       "use": "@vercel/node",
       "config": {
-        "maxLambdaSize": "50mb",
         "maxDuration": 300,
-        "memory": 1024,
-        "includeFiles": ["apps/backend/prisma/**", "apps/backend/dist/**"]
+        "memory": 1024
       }
     }
   ],
