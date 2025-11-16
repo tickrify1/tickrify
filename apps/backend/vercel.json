@@ -1,30 +1,5 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "dist/src/vercel.js",
-      "use": "@vercel/node",
-      "config": {
-        "maxLambdaSize": "50mb",
-        "includeFiles": [
-          "dist/**",
-          "prisma/**",
-          "node_modules/.prisma/**",
-          "node_modules/@prisma/client/**"
-        ]
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/dist/src/vercel.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/dist/src/vercel.js"
-    }
-  ],
   "functions": {
     "dist/src/vercel.js": {
       "maxDuration": 300,
@@ -32,7 +7,10 @@
       "runtime": "nodejs20.x"
     }
   },
-  "env": {
-    "NODE_ENV": "production"
-  }
+  "routes": [
+    {
+      "src": "/api/(.*)",
+      "dest": "dist/src/vercel.js"
+    }
+  ]
 }
