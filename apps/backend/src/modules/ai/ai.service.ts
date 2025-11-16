@@ -2,6 +2,8 @@ import { Injectable, BadRequestException, ServiceUnavailableException } from '@n
 import { PrismaService } from '../database/prisma.service';
 import { S3Service } from '../storage/s3.service';
 import { getAiQueue } from './ai.queue';
+import { AIAdapter } from './ai.adapter';
+import { TRADING_SYSTEM_PROMPT } from '../../common/prompts/trading-system-prompt';
 import { UploadedFile } from '../../common/interfaces/multer';
 
 @Injectable()
@@ -9,6 +11,7 @@ export class AiService {
   constructor(
     private prisma: PrismaService,
     private s3Service: S3Service,
+    private aiAdapter: AIAdapter,
   ) {}
 
   async createAnalysis(
@@ -63,38 +66,95 @@ export class AiService {
       });
       console.log('[AiService] Analysis created:', analysis.id);
 
-      // Enfileirar job para processamento
-      console.log('[AiService] Adding job to queue...');
+      // Enfileirar job para processamento ou processar síncronamente
+      console.log('[AiService] Checking queue availability...');
       const queue = getAiQueue();
       
       if (!queue) {
-        // In serverless without Redis, mark as failed
-        await this.prisma.analysis.update({
-          where: { id: analysis.id },
-          data: { 
-            status: 'error',
-            reasoning: 'Queue service not available in serverless environment. Please configure Redis or use a dedicated worker service.'
+        // Sem Redis: processar síncronamente
+        console.log('[AiService] No Redis queue available, processing synchronously...');
+        
+        try {
+          // Atualizar status para processing
+          await this.prisma.analysis.update({
+            where: { id: analysis.id },
+            data: { status: 'processing' },
+          });
+
+          // Buscar prompt
+          let prompt: string;
+          if (promptOverride) {
+            prompt = promptOverride;
+          } else if (promptVersion) {
+            const promptConfig = await this.prisma.promptConfig.findUnique({
+              where: { version: promptVersion },
+            });
+            prompt = promptConfig?.prompt || TRADING_SYSTEM_PROMPT;
+          } else {
+            const latestPrompt = await this.prisma.promptConfig.findFirst({
+              where: { isActive: true },
+              orderBy: { version: 'desc' },
+            });
+            prompt = latestPrompt?.prompt || TRADING_SYSTEM_PROMPT;
           }
+
+          console.log('[AiService] Processing analysis with AI...');
+          
+          // Processar análise com IA
+          const aiResponse = await this.aiAdapter.analyzeImage(imageUrl, prompt);
+          
+          console.log('[AiService] AI analysis completed:', aiResponse);
+
+          // Salvar resultado
+          await this.prisma.analysis.update({
+            where: { id: analysis.id },
+            data: {
+              status: 'done',
+              recommendation: aiResponse.recommendation as any,
+              confidence: aiResponse.confidence,
+              reasoning: aiResponse.reasoning,
+              fullResponse: aiResponse.rawResponse || aiResponse,
+            },
+          });
+
+          console.log('[AiService] Analysis completed synchronously');
+        } catch (error) {
+          console.error('[AiService] Error processing analysis:', error);
+          
+          // Marcar como failed
+          await this.prisma.analysis.update({
+            where: { id: analysis.id },
+            data: {
+              status: 'failed',
+              reasoning: `Erro ao processar análise: ${error instanceof Error ? error.message : 'Unknown error'}`,
+            },
+          });
+          
+          throw error;
+        }
+      } else {
+        // Com Redis: enfileirar para processamento assíncrono
+        console.log('[AiService] Queue available, adding job to queue...');
+        await queue.add('process-analysis', {
+          analysisId: analysis.id,
+          imageUrl,
+          promptOverride,
+          promptVersion,
         });
-        throw new ServiceUnavailableException(
-          'Analysis queue not available. Please contact support or try again later.'
-        );
+        console.log('[AiService] Job added to queue');
       }
-      
-      await queue.add('process-analysis', {
-        analysisId: analysis.id,
-        imageUrl,
-        promptOverride,
-        promptVersion,
+
+      // Buscar status atualizado (pode ser 'done' se processado síncronamente)
+      const updatedAnalysis = await this.prisma.analysis.findUnique({
+        where: { id: analysis.id },
       });
-      console.log('[AiService] Job added to queue');
 
       return {
         id: analysis.id,
-        status: 'pending',
+        status: updatedAnalysis?.status || 'pending',
         imageUrl,
         createdAt: analysis.createdAt,
-        updatedAt: analysis.updatedAt,
+        updatedAt: updatedAnalysis?.updatedAt || analysis.updatedAt,
       };
     } catch (error) {
       console.error('[AiService] Error in createAnalysis:', error);
