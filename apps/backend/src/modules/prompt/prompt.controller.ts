@@ -2,7 +2,7 @@ import { Controller, Post, Get, Body, Param, UseGuards, ParseIntPipe } from '@ne
 import { AuthGuard } from '../auth/auth.guard';
 import { PromptService } from './prompt.service';
 
-@Controller('api/prompts')
+@Controller('prompts')
 export class PromptController {
   constructor(private promptService: PromptService) {}
 

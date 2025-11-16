@@ -1,7 +1,7 @@
 // API Client for Tickrify Backend
 import { useAuth } from '@clerk/clerk-react';
 
-export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3000';
+export const API_BASE_URL = (import.meta as any).env?.VITE_API_URL || 'http://localhost:3001';
 
 export interface AIAnalysisResponse {
   id: string;

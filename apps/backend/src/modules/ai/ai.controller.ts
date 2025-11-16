@@ -16,7 +16,7 @@ import { AiService } from './ai.service';
 import { PrismaService } from '../database/prisma.service';
 import { UploadedFile as UploadedFileType } from '../../common/interfaces/multer';
 
-@Controller('api/ai')
+@Controller('ai')
 export class AiController {
   constructor(
     private aiService: AiService,

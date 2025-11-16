@@ -3,7 +3,7 @@ import { AuthGuard } from './auth.guard';
 import { CurrentUser } from '../../common/decorators/user.decorator';
 import { PrismaService } from '../database/prisma.service';
 
-@Controller('api/auth')
+@Controller('auth')
 export class AuthController {
   constructor(private prisma: PrismaService) {}
 

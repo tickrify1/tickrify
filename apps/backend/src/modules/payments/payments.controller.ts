@@ -4,7 +4,7 @@ import { CurrentUser } from '../../common/decorators/user.decorator';
 import { PaymentsService } from './payments.service';
 import { PrismaService } from '../database/prisma.service';
 
-@Controller('api/payments')
+@Controller('payments')
 export class PaymentsController {
   constructor(
     private paymentsService: PaymentsService,
