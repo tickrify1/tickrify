@@ -3,18 +3,14 @@
   "builds": [
     {
       "src": "apps/frontend/package.json",
-      "use": "@vercel/static-build",
+      "use": "@vercel/static-build@1.0.1",
       "config": {
         "distDir": "dist"
       }
     },
     {
       "src": "apps/backend/src/vercel.ts",
-      "use": "@vercel/node",
-      "config": {
-        "maxDuration": 300,
-        "memory": 1024
-      }
+      "use": "@vercel/node@3.0.7"
     }
   ],
   "routes": [
