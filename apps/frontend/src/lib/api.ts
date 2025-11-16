@@ -67,7 +67,7 @@ class APIClient {
       formData.append('promptOverride', payload.promptOverride);
     }
 
-    const response = await fetch(`${API_BASE_URL}/ai/analyze`, {
+    const response = await fetch(`${API_BASE_URL}/api/ai/analyze`, {
       method: 'POST',
       headers: {
         ...this.getAuthHeader(token),
@@ -88,7 +88,7 @@ class APIClient {
     token: string | null,
   ): Promise<AIAnalysisResponse> {
     const response = await fetch(
-      `${API_BASE_URL}/ai/analysis/${analysisId}`,
+      `${API_BASE_URL}/api/ai/analysis/${analysisId}`,
       {
         method: 'GET',
         headers: {
@@ -110,7 +110,7 @@ class APIClient {
     limit = 20,
   ): Promise<AIAnalysisResponse[]> {
     const response = await fetch(
-      `${API_BASE_URL}/ai/analyses?limit=${limit}`,
+      `${API_BASE_URL}/api/ai/analyses?limit=${limit}`,
       {
         method: 'GET',
         headers: {

@@ -8,7 +8,7 @@ export async function createCheckoutSession(
   planType: 'pro',
   token: string,
 ) {
-  const response = await fetch(`${API_BASE_URL}/stripe/create-checkout-session`, {
+  const response = await fetch(`${API_BASE_URL}/api/stripe/create-checkout-session`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export async function createCheckoutSession(
  * Criar portal do cliente
  */
 export async function createCustomerPortal(token: string) {
-  const response = await fetch(`${API_BASE_URL}/stripe/create-customer-portal`, {
+  const response = await fetch(`${API_BASE_URL}/api/stripe/create-customer-portal`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ export async function createCustomerPortal(token: string) {
  * Cancelar assinatura
  */
 export async function cancelSubscription(token: string) {
-  const response = await fetch(`${API_BASE_URL}/stripe/cancel-subscription`, {
+  const response = await fetch(`${API_BASE_URL}/api/stripe/cancel-subscription`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export async function cancelSubscription(token: string) {
  * Reativar assinatura
  */
 export async function reactivateSubscription(token: string) {
-  const response = await fetch(`${API_BASE_URL}/stripe/reactivate-subscription`, {
+  const response = await fetch(`${API_BASE_URL}/api/stripe/reactivate-subscription`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -96,7 +96,7 @@ export async function reactivateSubscription(token: string) {
  * Obter assinatura do usuário
  */
 export async function getUserSubscription(token: string) {
-  const response = await fetch(`${API_BASE_URL}/stripe/subscription`, {
+  const response = await fetch(`${API_BASE_URL}/api/stripe/subscription`, {
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
